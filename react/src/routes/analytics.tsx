@@ -38,7 +38,9 @@ function AnalyticsPage() {
             </h2>
             <p className="mt-4 text-muted">
               This is a model-weight estimate, with an overhead allowance you choose. It is not a
-              hardware benchmark or a guarantee that a model will run.
+              hardware benchmark or a guarantee that a model will run. A handset with about 3 GB of
+              RAM is the screen. Several department assistants and your business files stay on a
+              server you control or a private cloud.
             </p>
             <p className="mt-3 text-xs leading-relaxed text-muted">
               Weight GiB = parameters in billions × 1,000,000,000 × bits ÷ 8 ÷ 1,073,741,824. The

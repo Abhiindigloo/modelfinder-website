@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { formatUsd } from "@/lib/money";
-import { memory, summarize, validate, type UsageRecord } from "@/lib/usage";
+import { memory, smallDeviceNote, summarize, validate, type UsageRecord } from "@/lib/usage";
 
 const numberFmt = new Intl.NumberFormat("en-US");
 
@@ -239,6 +239,7 @@ export function MemoryForm() {
   let weights = "—";
   let estimate = "—";
   let note = "";
+  let device = "";
   try {
     if ([parameters, bits, overhead, available].some((v) => v.trim() === "")) {
       throw new Error("Complete all four fields.");
@@ -250,6 +251,7 @@ export function MemoryForm() {
       result.headroom >= 0
         ? `${result.headroom.toFixed(2)} GiB remains under these assumptions. This does not establish runtime fit.`
         : `${Math.abs(result.headroom).toFixed(2)} GiB over the entered memory budget, before any additional runtime requirements.`;
+    device = smallDeviceNote(Number(available));
   } catch (error) {
     note = error instanceof Error ? error.message : "Check the inputs.";
   }
@@ -314,6 +316,7 @@ export function MemoryForm() {
       <p className="mt-3 text-sm" role="status">
         {note}
       </p>
+      {device ? <p className="mt-3 text-sm">{device}</p> : null}
     </form>
   );
 }

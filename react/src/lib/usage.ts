@@ -140,6 +140,11 @@ export function summarize(records: UsageRecord[], days = 0, now = Date.now()): S
 
 export type MemoryEstimate = { weights: number; estimate: number; headroom: number };
 
+export function smallDeviceNote(available: number): string {
+  if (!Number.isFinite(available) || available > 4) return "";
+  return "This budget is handset-sized. Do not run several department assistants, a document index, or fine-tunes on the phone. Use the phone as the screen — web, mobile, Teams, or Slack — and keep the models and your business data on a server you control or a private cloud. Smaller than a generalist does not mean it fits in about 3 GB. Fully on this device, only one very small quantized model for one narrow task is a candidate, and that fit is unverified.";
+}
+
 export function memory(
   parameters: number,
   bits: number,

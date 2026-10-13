@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { formatUsd } from "./money.ts";
-import { memory, summarize, validate } from "./usage.ts";
+import { memory, smallDeviceNote, summarize, validate } from "./usage.ts";
 
 const row = (extra: Record<string, unknown> = {}) => ({
   timestamp: "2026-10-12T10:00:00Z",
@@ -72,6 +72,15 @@ test("model weights use binary GiB", () => {
   assert.ok(Math.abs(r.estimate - 15.64621925354) < 1e-10);
   assert.ok(r.headroom > 0);
   assert.ok(memory(70, 16, 20, 24).headroom < 0);
+});
+
+test("a 3 GB handset budget gets the screen-only suggestion", () => {
+  const note = smallDeviceNote(3);
+  assert.match(note, /phone as the screen/);
+  assert.match(note, /private cloud/);
+  assert.equal(smallDeviceNote(24), "");
+  assert.equal(smallDeviceNote(4), note);
+  assert.equal(smallDeviceNote(4.01), "");
 });
 
 test("sub-cent USD does not render as zero", () => {

@@ -21,8 +21,8 @@ function StartPage() {
       </p>
       <h2>Download the skills plugin</h2>
       <p>
-        <a href="https://github.com/Abhiindigloo/modelfinder-website/raw/main/downloads/model-finder-1.0.3-preparation.zip">
-          Download Model Finder 1.0.3 ZIP
+        <a href="https://github.com/Abhiindigloo/modelfinder-website/raw/feat/react-model-finder/downloads/model-finder-1.0.4-preparation.zip">
+          Download Model Finder 1.0.4 ZIP
         </a>
       </p>
       <p>
