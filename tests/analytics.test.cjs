@@ -19,4 +19,5 @@ test('preserves malicious labels as inert strings and discards unneeded fields',
 test('model weights use binary GiB and selected precision, not decimal GB',()=>{
  const r=core.memory(7,16,20,24);assert.ok(Math.abs(r.weights-13.0385160446167)<1e-10);assert.ok(Math.abs(r.estimate-15.64621925354)<1e-10);assert.ok(r.headroom>0);assert.ok(core.memory(70,16,20,24).headroom<0);
  for(const params of [[0,16,20,24],[7,3,20,24],[7,16,-1,24],[7,16,20,-1],[NaN,16,20,24]])assert.throws(()=>core.memory(...params));
+ const note=core.smallDeviceNote(3);assert.match(note,/phone as the screen/);assert.match(note,/private cloud/);assert.equal(core.smallDeviceNote(24),'');assert.equal(core.smallDeviceNote(4),note);assert.equal(core.smallDeviceNote(4.01),'');
 });

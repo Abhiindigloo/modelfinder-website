@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,480;1,9..144,560&family=Outfit:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --color-ink: #14231f;
+  --color-paper: #f4f3ea;
+  --color-lime: #d7ef7a;
+  --color-muted: #5c6a62;
+  --color-line: #d5dccb;
+  --color-sage: #dce8d4;
+  --color-card: #fffcf6;
+  --color-moss: #314b3e;
+  --color-soft: #edf1e7;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid #82ac3c;
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+.decision {
+  position: relative;
+  height: 22rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--color-sage);
+}
+@media (min-width: 768px) {
+  .decision {
+    height: 30rem;
+  }
+}
+.decision-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+.decision-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+.decision-node {
+  position: absolute;
+  z-index: 1;
+  border-radius: 999px;
+  background: var(--color-paper);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8125rem;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+@media (min-width: 768px) {
+  .decision-core {
+    font-size: 2.15rem;
+  }
+}

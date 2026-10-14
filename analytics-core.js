@@ -36,6 +36,10 @@
     const weights=parameters*1e9*bits/8/2**30, estimate=weights*(1+overhead/100);
     return {weights,estimate,headroom:available-estimate};
   }
-  const api=Object.freeze({validate,summarize,memory});
+  function smallDeviceNote(available) {
+    if (!Number.isFinite(available) || available > 4) return '';
+    return 'This budget is handset-sized. Do not run several department assistants, a document index, or fine-tunes on the phone. Use the phone as the screen — web, mobile, Teams, or Slack — and keep the models and your business data on a server you control or a private cloud. Smaller than a generalist does not mean it fits in about 3 GB. Fully on this device, only one very small quantized model for one narrow task is a candidate, and that fit is unverified.';
+  }
+  const api=Object.freeze({validate,summarize,memory,smallDeviceNote});
   if(typeof module!=='undefined'&&module.exports) module.exports=api; else root.ModelFinderAnalytics=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
